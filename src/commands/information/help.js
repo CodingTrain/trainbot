@@ -7,12 +7,14 @@ exports.run = (bot, msg, args) => {
             .filter(cmd => {
                 const perms = bot.commands.get(cmd).info.permissions;
                 if (perms && !perms.every(e => !msg.member.permissions.has(e))) return true;
-                if(!perms) return true;
+                if (!perms) return true;
                 return false;
             })
             .map(cmd => `\`${cmd}\``)
             .join(', ');
-        msg.channel.send(`Available commands:\n${cmdsString}\n\ntip: use \`${bot.config.prefix}help <command>\` to get help about a specific command`);
+        msg.channel.send(
+            `Available commands:\n${cmdsString}\n\ntip: use \`${bot.config.prefix}help <command>\` to get help about a specific command`,
+        );
     } else if (args.length > 0) {
         if (!bot.commands.has(args[0])) throw new Error(`The command ${args[0]} isn't found.`);
 
@@ -38,5 +40,5 @@ exports.run = (bot, msg, args) => {
 exports.info = {
     name: 'help',
     usage: ['help', 'help <command>'],
-    help: 'Gives all the current commands or the information about one command'
+    help: 'Gives all the current commands or the information about one command',
 };
