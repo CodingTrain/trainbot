@@ -1,0 +1,5 @@
+{
+    "token": "mytoken",
+    "prefix": "!",
+    "ownerID": "User ID of the bot owner"
+}

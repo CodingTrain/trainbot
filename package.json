@@ -1,0 +1,17 @@
+{
+  "name": "thecodingtrainbot",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "author": "Noah van Boven",
+  "license": "MIT",
+  "dependencies": {
+    "date-fns": "^2.0.0-alpha.34",
+    "discord.js": "^11.5.0"
+  },
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3"
+  }
+}

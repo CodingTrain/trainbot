@@ -1,0 +1,13 @@
+{
+    "extends": "airbnb-base",
+    "rules": {
+        "indent": ["error", 4],
+        "no-restricted-syntax": ["error", "WithStatement", "BinaryExpression[operator='in']"],
+        "import/no-dynamic-require": "off",
+        "global-require": "off",
+        "arrow-parens": "off",
+        "no-prototype-builtins": "off",
+        "no-console": "off",
+        "class-methods-use-this": "off"
+    }
+}
