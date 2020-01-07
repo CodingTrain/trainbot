@@ -1,7 +1,7 @@
 exports.emojis = {
-    bloblseeping: '<:blobsleeping:589823456150028309>',
-    blobgamer: '<:blobgamer:589794856877162517>',
-    bloboutage: '<:bloboutage:589825191568343041>',
-    photoblob: '<:photoblob:589826186780213250>',
-    blobtea: '<:blobtea:589827007576145950>',
+    bloblseeping: '<:blobsleeping:660160968440938497>',
+    blobgamer: '<:blobgamer:660161120719470642>',
+    bloboutage: '<:bloboutage:660161241062309931>',
+    photoblob: '<:photoblob:660161410042691615>',
+    blobtea: '<:blobtea:660162050558787596>',
 };
