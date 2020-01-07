@@ -14,17 +14,25 @@ exports.run = (bot, msg, args) => {
         offline: `User is offline, probably sleeping ${emojis.bloblseeping}`,
         dnd: `User doesn\'t want to be disturbed right now ${emojis.bloboutage}`,
     };
-    const game = member.presence.game ? member.presence.game.name : 'Not playing a game';
-    const createdAt = formatDistanceToNow(member.user.createdAt, { addSuffix: true });
+    const game = member.presence.game
+        ? member.presence.game.name
+        : 'Not playing a game';
+    const createdAt = formatDistanceToNow(member.user.createdAt, {
+        addSuffix: true,
+    });
     const joinedAt = formatDistanceToNow(member.joinedAt, { addSuffix: true });
     let roles = 'This user has no special roles';
     let size = 0;
-    if (member.roles.size !== 1) { // We don't use the @everyone role
-        roles = member.roles
-            .filter(role => role.name !== '@everyone');
+    if (member.roles.size !== 1) {
+    // We don't use the @everyone role
+        roles = member.roles.filter(role => role.name !== '@everyone');
         ({ size } = roles);
         if (roles.size !== 1) {
-            roles = `${roles.slice(0, -1).map(r => r.name).join(', ')} and ${roles.last().name}`;
+            roles = `${roles
+                .array()
+                .slice(0, -1)
+                .map(r => r.name)
+                .join(', ')} and ${roles.last().name}`;
         } else {
             roles = roles.first().name;
         }
@@ -40,8 +48,13 @@ exports.run = (bot, msg, args) => {
         .addField('Account created', createdAt, true)
         .addField('Joined the server', joinedAt, true)
         .addField('ID', member.id, true)
-        .addField('Bot :robot:', member.user.bot ? 'Bleep bloop, I am a bot' : 'This person isn\'t a bot', true)
-        .addField(`Roles [${size}]`, `\`${roles}\``);
+        .addField(
+            'Bot :robot:',
+            member.user.bot ? 'Bleep bloop, I am a bot' : 'This person isn\'t a bot',
+            true,
+        )
+        .addField(`Roles [${size}]`, `\`${roles}\``)
+        .setFooter('Blobs provided by blobs.gg');
     msg.channel.send(embed);
 };
 

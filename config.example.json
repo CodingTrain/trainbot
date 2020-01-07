@@ -1,5 +1,6 @@
 {
-    "token": "mytoken",
-    "prefix": "!",
-    "ownerID": "User ID of the bot owner"
+  "token": "mytoken",
+  "prefix": "!",
+  "ownerID": "User ID of the bot owner",
+  "notificationRole": "ID of the notification role"
 }

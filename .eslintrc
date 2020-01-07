@@ -8,6 +8,7 @@
         "arrow-parens": "off",
         "no-prototype-builtins": "off",
         "no-console": "off",
-        "class-methods-use-this": "off"
+        "class-methods-use-this": "off",
+        "quotes": ["error", "single", { "avoidEscape": false }]
     }
 }
