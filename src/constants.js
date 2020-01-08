@@ -4,4 +4,5 @@ exports.emojis = {
     bloboutage: '<:bloboutage:660161241062309931>',
     photoblob: '<:photoblob:660161410042691615>',
     blobtea: '<:blobtea:660162050558787596>',
+    ct_asterisk: '<:ct_asterisk:664125053008609300>',
 };
