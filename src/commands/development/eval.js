@@ -25,12 +25,12 @@ exports.run = async (bot, msg, args) => {
         );
 
         msg.channel.send(
-            `:mailbox:Input:\`\`\`js\n${code}\n\`\`\`\n:mailbox_with_mail:Output:\`\`\`js\n${output}\n\`\`\``,
+            `${msg.member} :mailbox:Input:\`\`\`js\n${code}\n\`\`\`\n:mailbox_with_mail:Output:\`\`\`js\n${output}\n\`\`\``,
         );
     } catch (err) {
         msg.delete();
         msg.channel.send(
-            `:mailbox:Input:\`\`\`js\n${code}\n\`\`\`\n:mailbox_with_no_mail::cry:Output:\`\`\`\n${err}\n\`\`\``,
+            `${msg.member} :mailbox:Input:\`\`\`js\n${code}\n\`\`\`\n:mailbox_with_no_mail::cry:Output:\`\`\`\n${err}\n\`\`\``,
         );
     }
 };
