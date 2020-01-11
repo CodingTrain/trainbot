@@ -1,4 +1,4 @@
-exports.run = (bot) => {
+exports.run = bot => {
     bot.commands.loadCommands();
 
     bot.logger.info(
@@ -9,5 +9,12 @@ exports.run = (bot) => {
         Loaded ${bot.commands.size} command(s) 🤖`,
     );
 
-    bot.user.setPresence({ game: { name: 'Choo choo! I am trainbot.', type: 0 } });
+    bot.user.setPresence({
+        game: { name: 'Choo choo! I am trainbot.', type: 0 },
+    });
+
+    // Fetch messages that are to be used
+    bot.channels
+        .get(bot.config.rulesChannel)
+        .fetchMessage(bot.config.rulesMessage);
 };

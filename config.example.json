@@ -3,6 +3,7 @@
   "prefix": "!",
   "ownerID": "User ID of the bot owner",
   "notificationRole": "ID of the notification role",
-  "welcomeChannel": "ID of the welcome channel",
-  "rulesChannel": "ID of the channel with the rules"
+  "rulesChannel": "ID of the channel with the rules",
+  "rulesMessage": "ID of the rule message",
+  "mutedRole": "ID of the muted role"
 }
