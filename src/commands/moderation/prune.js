@@ -1,7 +1,7 @@
 exports.run = async (bot, msg, args) => {
     if (args.length < 1) throw new Error('I need an amount of messages to prune');
-    if (isNaN(args[0])) throw new Error("Your amount isn't a number.");
-    if (args[0] > 50) throw new Error("You can't delete more that 50 messages at once");
+    if (isNaN(args[0])) throw new Error('Your amount isn\'t a number.');
+    if (args[0] > 50) throw new Error('You can\'t delete more that 50 messages at once');
 
     const messages = await msg.channel.fetchMessages({ limit: Number(args[0]) });
 

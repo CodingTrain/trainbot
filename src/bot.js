@@ -5,7 +5,9 @@ const Commands = require('./managers/commands');
 const Logger = require('./managers/logger');
 
 const bot = new Discord.Client();
-const config = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'config.json')));
+const config = JSON.parse(
+    fs.readFileSync(path.join(__dirname, '..', 'config.json')),
+);
 
 bot.config = config;
 bot.commands = new Commands(bot);
