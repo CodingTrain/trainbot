@@ -21,3 +21,10 @@ exports.resolveUser = (msg, username) => {
     }
     return null;
 };
+
+exports.capitalize = (str) => (
+    str.charAt(0).toUpperCase() + str
+        .slice(1)
+        .toString()
+        .toLowerCase()
+);

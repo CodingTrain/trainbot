@@ -1,42 +1,47 @@
-const { MessageCollector } = require('discord.js');
-const { resolveUser } = require('../../utils');
+const { Command } = require('discord-akairo');
 
-exports.run = async (bot, msg, args) => {
-    if (args.length < 1) throw new Error('I need a user to ban');
-
-    const user = resolveUser(msg, args.join(' '));
-    if (!user) throw new Error(`The user ${args.join(' ')} couldn't be found`);
-
-    if (user.bannable) {
-        msg.channel.send('What is the reason for banning?');
-        const collector = new MessageCollector(
-            msg.channel,
-            m => m.author === msg.author,
-            { max: 1, time: 60000 },
-        );
-        await collector.on('collect', async m => {
-            await user.ban(m.content);
-            msg.channel.send(
-                `Succesfully banned ${user.user.username} for the reason: \`${m.content}\``,
-            );
-            collector.stop();
+class BanCommand extends Command {
+    constructor() {
+        super('ban', {
+            aliases: ['ban'],
+            description: {
+                content: 'Bans a specific user',
+                usage: 'ban <user>',
+            },
+            userPermissions: ['BAN_MEMBERS'],
+            clientPermissions: ['BAN_MEMBERS'],
+            channel: 'guild',
+            args: [
+                {
+                    id: 'member',
+                    type: 'member',
+                    prompt: {
+                        start: 'Who is the member you want to ban?',
+                        retry: 'Invalid member. Try again!',
+                    },
+                },
+                {
+                    id: 'reason',
+                    match: 'rest',
+                    prompt: {
+                        start: 'What is the reason for banning?',
+                        time: 120e3,
+                    },
+                },
+            ],
         });
-
-        await collector.on('end', async (collected, reason) => {
-            if (reason === 'time') {
-                msg.channel.send(
-                    "The ban ended because you didn't provide a reason within 2 minutes.",
-                );
-            }
-        });
-    } else {
-        throw new Error("This user can't be banned");
     }
-};
 
-exports.info = {
-    name: 'ban',
-    usage: 'ban <user>',
-    help: 'Bans a specific user',
-    permissions: ['BAN_MEMBERS'],
-};
+    async exec(msg, { member, reason }) {
+        if (member.bannable) {
+            await member.ban({ reason });
+            await msg.channel.send(
+                `Succesfully banned ${member.user.username} for the reason: \`${reason}\``,
+            );
+        } else {
+            throw new Error('This user can\'t be banned');
+        }
+    }
+}
+
+module.exports = BanCommand;

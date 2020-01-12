@@ -1,14 +1,22 @@
 {
   "name": "thecodingtrainbot",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "src/bot.js",
   "author": "Noah van Boven",
   "license": "MIT",
-  "dependencies": {
-    "date-fns": "^2.0.0-alpha.34",
-    "discord.js": "^11.5.0"
-  },
   "type": "module",
+  "scripts": {
+    "start": "node .",
+    "lint": "eslint src --ext .js",
+    "lint:fix": "eslint src --ext .js --fix"
+  },
+  "dependencies": {
+    "bufferutil": "^4.0.1",
+    "common-tags": "^1.8.0",
+    "date-fns": "^2.0.0-alpha.34",
+    "discord-akairo": "discord-akairo/discord-akairo",
+    "discord.js": "discordjs/discord.js"
+  },
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",

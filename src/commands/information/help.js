@@ -1,44 +1,66 @@
-const { RichEmbed } = require('discord.js');
+const { Command } = require('discord-akairo');
+const { MessageEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
+const { capitalize } = require('../../util');
 
-exports.run = (bot, msg, args) => {
-    if (args.length === 0) {
-        const cmdsString = bot.commands.names
-            .filter(cmd => !bot.commands.get(cmd).info.owner)
-            .filter(cmd => {
-                const perms = bot.commands.get(cmd).info.permissions;
-                if (perms && !perms.every(e => !msg.member.permissions.has(e))) return true;
-                if (!perms) return true;
-                return false;
-            })
-            .map(cmd => `\`${cmd}\``)
-            .join(', ');
-        msg.channel.send(
-            `Available commands:\n${cmdsString}\n\ntip: use \`${bot.config.prefix}help <command>\` to get help about a specific command`,
-        );
-    } else if (args.length > 0) {
-        if (!bot.commands.has(args[0])) throw new Error(`The command ${args[0]} isn't found.`);
-
-        const { info } = bot.commands.get(args[0]);
-
-        let { usage } = info;
-        if (Array.isArray(info.usage)) {
-            usage = info.usage.map(el => bot.config.prefix + el).join('\n');
-        } else {
-            usage = bot.config.prefix + usage;
-        }
-
-        const embed = new RichEmbed()
-            .setTitle(info.name)
-            .addField('Usage(s)', usage, true)
-            .addField('Category', info.category, true)
-            .setDescription(info.help);
-
-        msg.channel.send(embed);
+class HelpCommand extends Command {
+    constructor() {
+        super('help', {
+            aliases: ['help'],
+            description: {
+                content: 'Gives all the current commands or the information about one command',
+                usage: ['help', 'help <command>'],
+            },
+            args: [
+                {
+                    id: 'command',
+                    type: 'commandAlias',
+                    default: null,
+                },
+            ],
+        });
     }
-};
 
-exports.info = {
-    name: 'help',
-    usage: ['help', 'help <command>'],
-    help: 'Gives all the current commands or the information about one command',
-};
+    exec(msg, { command }) {
+        if (!command) {
+            const cmdsString = this.handler.modules
+                .filter(cmd => !cmd.ownerOnly)
+                .filter(cmd => {
+                    const perms = cmd.userPermissions;
+                    if (typeof perms === 'function') {
+                        return !perms(msg);
+                    }
+                    if (perms && !perms.every(e => !msg.member.permissions.has(e))) return true;
+                    if (!perms) return true;
+                    return false;
+                })
+                .map(cmd => `\`${cmd}\``)
+                .join(', ');
+            msg.channel.send(
+                stripIndents`Available commands:
+                ${cmdsString}
+                
+                tip: use \`${this.handler.prefix}help <command>\` to get help about a specific command`,
+            );
+        } else {
+            const info = command.description;
+
+            let { usage } = info;
+            if (Array.isArray(command.description.usage)) {
+                usage = info.usage.map(el => this.handler.prefix + el).join('\n');
+            } else {
+                usage = this.handler.prefix + usage;
+            }
+
+            const embed = new MessageEmbed()
+                .setTitle(command.id)
+                .addField('Usage(s)', usage, true)
+                .addField('Category', capitalize(info.category), true)
+                .setDescription(info.content);
+
+            msg.channel.send(embed);
+        }
+    }
+}
+
+module.exports = HelpCommand;
