@@ -25,12 +25,12 @@ exports.run = async (bot, msg, args) => {
         await collector.on('end', async (collected, reason) => {
             if (reason === 'time') {
                 msg.channel.send(
-                    "The ban ended because you didn't provide a reason within 2 minutes.",
+                    'The ban ended because you didn\'t provide a reason within 2 minutes.',
                 );
             }
         });
     } else {
-        throw new Error("This user can't be banned");
+        throw new Error('This user can\'t be banned');
     }
 };
 
