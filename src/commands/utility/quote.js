@@ -10,6 +10,7 @@ exports.run = async (bot, msg, args) => {
         .setAuthor(fetchedMessage.author.tag)
         .setDescription(fetchedMessage.content)
         .addField('Link', `[Jump to message](${fetchedMessage.url})`);
+    msg.delete();
     msg.channel.send(embed);
 };
 
@@ -17,5 +18,5 @@ exports.info = {
     name: 'quote',
     usage: 'quote <channel> <message>',
     help: 'Quotes a message',
-    roles: ['Signal Maintainer'],
+    roles: ['Dispatcher', 'Signal Maintainer'],
 };
