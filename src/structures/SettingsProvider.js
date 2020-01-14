@@ -6,6 +6,7 @@ class SettingsProvider extends Provider {
     constructor(client) {
         super();
         this.client = client;
+        this.ready = false;
     }
 
     async init() {
@@ -18,6 +19,8 @@ class SettingsProvider extends Provider {
         for (const item of settings.values()) {
             this.items.set(item.id, item);
         }
+
+        this.ready = true;
     }
 
     get(guild, key, defaultValue) {

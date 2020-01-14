@@ -23,7 +23,12 @@ class TrainBot extends AkairoClient {
 
         this.commandHandler = new TrainCommandHandler(this, {
             directory: path.join(__dirname, '..', 'commands/'),
-            prefix: this.config.prefix,
+            prefix: (msg) => {
+                let prefix = this.settings.ready ? this.settings.get(null, 'prefix', this.config.prefix) : this.config.prefix;
+                if (!msg || !msg.guild) return prefix;
+                prefix = this.settings.get(msg.guild, 'prefix', this.config.prefix);
+                return prefix;
+            },
             allowMention: true,
             aliasReplacement: /-/g,
             commandUtil: true,
