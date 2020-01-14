@@ -15,11 +15,15 @@
     "common-tags": "^1.8.0",
     "date-fns": "^2.0.0-alpha.34",
     "discord-akairo": "discord-akairo/discord-akairo",
-    "discord.js": "discordjs/discord.js"
+    "discord.js": "discordjs/discord.js",
+    "mongoose": "^5.8.7"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.3"
+  },
+  "optionalDependencies": {
+    "zlib-sync": "^0.1.6"
   }
 }

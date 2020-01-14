@@ -1,5 +1,6 @@
 {
   "token": "mytoken",
+  "dbURI": "my mongodb URI",
   "prefix": "!",
   "ownerID": "User ID of the bot owner",
   "notificationRole": "ID of the notification role",

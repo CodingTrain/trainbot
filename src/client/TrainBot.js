@@ -4,9 +4,11 @@ const {
     InhibitorHandler,
 } = require('discord-akairo');
 const { Collection } = require('discord.js');
+const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs');
 const TrainCommandHandler = require('../structures/TrainCommandHandler');
+const SettingsProvider = require('../structures/SettingsProvider');
 const Logger = require('../util/logger');
 
 const config = JSON.parse(
@@ -53,9 +55,28 @@ class TrainBot extends AkairoClient {
         this.logger = new Logger();
 
         this.blacklist = new Collection();
+
+        this.db = null;
+
+        this.settings = new SettingsProvider(this);
     }
 
-    init() {
+    async init() {
+        mongoose.set('useCreateIndex', true);
+
+        await mongoose.connect(config.dbURI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        this.logger.info('Connected to DB');
+
+        this.db = mongoose.connection;
+
+        this.db.on('error', this.logger.error);
+
+        await this.settings.init();
+        this.logger.info('Initialised settings');
+
         this.commandHandler.useInhibitorHandler(this.inhibitorHandler);
         this.commandHandler.useListenerHandler(this.listenerHandler);
 
@@ -70,9 +91,10 @@ class TrainBot extends AkairoClient {
         this.listenerHandler.loadAll();
     }
 
-    start() {
-        this.init();
-        return this.login(this.config.token);
+    async start() {
+        await this.init();
+        await this.login(this.config.token);
+        return this;
     }
 }
 
