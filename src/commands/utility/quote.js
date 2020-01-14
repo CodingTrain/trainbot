@@ -52,6 +52,7 @@ class QuoteCommand extends Command {
             .setAuthor(fetchedMessage.author.tag)
             .setDescription(fetchedMessage.content)
             .addField('Link', `[Jump to message](${fetchedMessage.url})`);
+        msg.delete();
         msg.util.send(embed);
     }
 }
