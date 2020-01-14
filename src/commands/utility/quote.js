@@ -6,7 +6,7 @@ class QuoteCommand extends Command {
         super('quote', {
             aliases: ['quote'],
             description: {
-                help: 'Quotes a message',
+                content: 'Quotes a message',
                 usage: 'quote <channel> <message>',
             },
             channel: 'guild',
@@ -14,7 +14,7 @@ class QuoteCommand extends Command {
     }
 
     userPermissions(message) {
-        if (!message.member.roles.some(r => r.name === 'Signal Maintainer')) return 'Signal Maintainer';
+        if (!message.member.roles.some(r => ['Dispatcher', 'Signal Maintainer'].includes(r.name))) return ['Signal Maintainer'];
         return null;
     }
 

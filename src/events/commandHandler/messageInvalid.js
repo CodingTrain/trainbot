@@ -11,8 +11,12 @@ class MessageInvalidListener extends Listener {
 
     async exec(message) {
         if (message.guild && message.util.parsed.prefix) {
-            if (!message.util.parsed.alias || !message.util.parsed.afterPrefix) return;
-            await message.channel.send(`:x: Sorry, the command ${message.util.parsed.afterPrefix} isn't found.`);
+            if (
+                !message.util.parsed.alias
+                || !message.util.parsed.afterPrefix
+                || message.util.handler.aliases.has(message.util.parsed.alias)
+            ) return;
+            await message.channel.send(`:x: Sorry, the command "${message.util.parsed.alias}" isn't found.`);
         }
     }
 }
