@@ -69,7 +69,7 @@ class UserInfoCommand extends Command {
             )
             .addField(`Roles [${size}]`, `\`${roles}\``)
             .setFooter('Blobs provided by blobs.gg');
-        msg.channel.send(embed);
+        msg.util.send(embed);
     }
 }
 

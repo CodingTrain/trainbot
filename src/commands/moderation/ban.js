@@ -35,7 +35,7 @@ class BanCommand extends Command {
     async exec(msg, { member, reason }) {
         if (member.bannable) {
             await member.ban({ reason });
-            await msg.channel.send(
+            await msg.util.send(
                 `Succesfully banned ${member.user.username} for the reason: \`${reason}\``,
             );
         } else {

@@ -43,12 +43,12 @@ class EvalCommand extends Command {
                 'BOT_TOKEN',
             );
 
-            msg.channel.send(
+            msg.util.send(
                 `${msg.member} :mailbox:Input:\`\`\`js\n${code}\n\`\`\`\n:mailbox_with_mail:Output:\`\`\`js\n${output}\n\`\`\``,
             );
         } catch (err) {
             msg.delete();
-            msg.channel.send(
+            msg.util.send(
                 `${msg.member} :mailbox:Input:\`\`\`js\n${code}\n\`\`\`\n:mailbox_with_no_mail::cry:Output:\`\`\`\n${err}\n\`\`\``,
             );
         }

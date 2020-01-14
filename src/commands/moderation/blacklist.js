@@ -44,13 +44,13 @@ class BlacklistCommand extends Command {
                 .setTitle('The Blacklist')
                 .setDescription('A list of people who are forbidden from using the bot')
                 .addField('List', list.length !== 0 ? list : 'There are no people on the blacklist');
-            msg.channel.send(embed);
+            msg.util.send(embed);
         } else if (method === 'add') {
             this.client.blacklist.set(member.id, member.user.username);
-            msg.channel.send(`Succesfully added ${member.user.username} to the blacklist`);
+            msg.util.send(`Succesfully added ${member.user.username} to the blacklist`);
         } else if (method === 'remove') {
             this.client.blacklist.delete(member.id);
-            msg.channel.send(`Succesfully removed ${member.user.username} from the blacklist`);
+            msg.util.send(`Succesfully removed ${member.user.username} from the blacklist`);
         }
     }
 }

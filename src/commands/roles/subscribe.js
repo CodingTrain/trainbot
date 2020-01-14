@@ -18,10 +18,10 @@ class SubscribeCommand extends Command {
             const { member } = msg;
             if (member.roles.has(this.client.config.notificationRole)) {
                 await member.roles.remove(this.client.config.notificationRole);
-                msg.channel.send('Removed role! You won\'t be notified anymore');
+                msg.util.send('Removed role! You won\'t be notified anymore');
             } else {
                 await member.roles.add(this.client.config.notificationRole);
-                msg.channel.send('Added role! You will now be notified');
+                msg.util.send('Added role! You will now be notified');
             }
         } catch (err) {
             console.error(err);

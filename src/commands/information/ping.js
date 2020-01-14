@@ -13,7 +13,7 @@ class PingCommand extends Command {
     }
 
     async exec(msg) {
-        const m = await msg.channel.send('Pong!');
+        const m = await msg.util.send('Pong!');
         m.edit(
             stripIndents(
                 `Pong!

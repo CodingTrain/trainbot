@@ -36,7 +36,7 @@ class HelpCommand extends Command {
                 })
                 .map(cmd => `\`${cmd}\``)
                 .join(', ');
-            msg.channel.send(
+            msg.util.send(
                 stripIndents`Available commands:
                 ${cmdsString}
                 
@@ -58,7 +58,7 @@ class HelpCommand extends Command {
                 .addField('Category', capitalize(info.category), true)
                 .setDescription(info.content);
 
-            msg.channel.send(embed);
+            msg.util.send(embed);
         }
     }
 }

@@ -35,7 +35,7 @@ class KickCommand extends Command {
     async exec(msg, { member, reason }) {
         if (member.kickable) {
             await member.kick(reason);
-            await msg.channel.send(
+            await msg.util.send(
                 `Succesfully kicked ${member.user.username} for the reason: \`${reason}\``,
             );
         } else {
