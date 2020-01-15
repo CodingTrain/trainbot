@@ -12,7 +12,7 @@ const config = JSON.parse(
 bot.config = config;
 bot.commands = new Commands(bot);
 bot.logger = new Logger();
-bot.blacklist = new Discord.Collection();
+bot.blacklist = fs.readFileSync("./blacklist.txt","UTF-8").split('\n');
 
 const events = fs.readdirSync(path.join(__dirname, 'events'));
 for (const event of events) {
@@ -20,5 +20,10 @@ for (const event of events) {
     const eventFunc = require(path.join(__dirname, 'events', name));
     bot.on(name, (...args) => eventFunc.run(bot, ...args));
 }
-
+bot.on('message',message=>{
+    if(bot.blacklist.some(a=>message.content.includes(a))){
+        message.delete();
+        message.author.send("Hi! Please don't make use of obscene/ discriminatory words, thanks!")
+    }
+})
 bot.login(config.token);
