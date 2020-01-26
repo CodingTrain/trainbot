@@ -10,6 +10,12 @@ exports.run = (bot, msg, args) => {
                 if (!perms) return true;
                 return false;
             })
+            .filter(cmd => {
+                const { roles } = bot.commands.get(cmd).info;
+                if (roles && !roles.every(e => !msg.member.permissions.has(e))) return true;
+                if (!roles) return true;
+                return false;
+            })
             .map(cmd => `\`${cmd}\``)
             .join(', ');
         msg.channel.send(
