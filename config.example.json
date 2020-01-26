@@ -4,6 +4,8 @@
   "ownerID": "User ID of the bot owner",
   "notificationRole": "ID of the notification role",
   "rulesChannel": "ID of the channel with the rules",
+  "welcomeChannel": "ID of the welcome channel",
+  "introductionsChannel": "ID of introductions channel",
   "rulesMessage": "ID of the rule message",
   "mutedRole": "ID of the muted role"
 }
