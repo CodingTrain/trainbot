@@ -12,7 +12,7 @@ exports.run = (bot, msg, args) => {
             })
             .filter(cmd => {
                 const { roles } = bot.commands.get(cmd).info;
-                if (roles && !roles.every(e => !msg.member.permissions.has(e))) return true;
+                if (roles && !roles.every(e => !msg.member.roles.find('name', e))) return true;
                 if (!roles) return true;
                 return false;
             })
