@@ -22,8 +22,8 @@ for (const event of events) {
 }
 bot.on('message',message=>{
     if(bot.blacklist.some(a=>message.content.includes(a))){
-        message.delete();
-        message.author.send("Hi! Please don't make use of obscene/ discriminatory words, thanks!")
+        message.delete(500);//In case this is triggered before the message is actually sent, so that way there is no undeletable messages (I have experience with this problem)
+        message.channel.send(message.author.toString()+" Hi! Please don't make use of obscene/ discriminatory words, thanks!")
     }
 })
 bot.login(config.token);
