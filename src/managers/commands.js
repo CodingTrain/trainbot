@@ -98,7 +98,7 @@ class Commands {
             if (permissions && !permissions.every(e => !msg.member.permissions.has(e))) {
                 return msg.channel.send(':x: Sorry you are not allowed to run this command');
             }
-            if (roles && roles.every(e => !msg.member.roles.find(role => role.name === e))) {
+            if (roles && !roles.every(e => !msg.member.roles.find(role => role.name === e))) {
                 return msg.channel.send(':x: Sorry you are not allowed to run this command');
             }
 
