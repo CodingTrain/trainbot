@@ -1,5 +1,6 @@
 const { RichEmbed } = require('discord.js');
 
+// eslint-disable-next-line consistent-return
 exports.run = (bot, msg, args) => {
     if (args.length === 0) {
         const cmdsString = bot.commands.names
@@ -25,6 +26,14 @@ exports.run = (bot, msg, args) => {
         if (!bot.commands.has(args[0])) throw new Error(`The command ${args[0]} isn't found.`);
 
         const { info } = bot.commands.get(args[0]);
+        const { permissions } = info;
+        const { roles } = info;
+        if (permissions && permissions.some(e => !msg.member.permissions.has(e))) {
+            return msg.channel.send('You\'re trying to ask for help for a command you don\'t have access to');
+        }
+        if (roles && roles.some(e => !msg.member.roles.find(role => role.name === e))) {
+            return msg.channel.send(':x: Sorry you are not allowed to run this command');
+        }
 
         let { usage } = info;
         if (Array.isArray(info.usage)) {
