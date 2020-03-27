@@ -20,10 +20,4 @@ for (const event of events) {
     const eventFunc = require(path.join(__dirname, 'events', name));
     bot.on(name, (...args) => eventFunc.run(bot, ...args));
 }
-bot.on('message',message=>{
-    if(bot.blacklist.some(a=>message.content.toLowerCase().includes(a.toLowerCase()))){
-        message.delete(500);//In case this is triggered before the message is actually sent, so that way there is no undeletable messages (I have experience with this problem)
-        message.channel.send(message.author.toString()+" Hi! Please don't make use of obscene/ discriminatory words, thanks!")
-    }
-})
 bot.login(config.token);
