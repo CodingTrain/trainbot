@@ -95,7 +95,7 @@ class Commands {
 
             const { permissions } = command.info;
             const { roles } = command.info;
-            if (permissions && permissions.every(e => !msg.member.permissions.has(e))) {
+            if (permissions && !permissions.every(e => !msg.member.permissions.has(e))) {
                 return msg.channel.send(':x: Sorry you are not allowed to run this command');
             }
             if (roles && roles.every(e => !msg.member.roles.find(role => role.name === e))) {
