@@ -15,7 +15,7 @@ exports.run = async (bot, msg, args) => {
     try {
         let evaled = await Promise.resolve(eval(code));
         if (typeof evaled !== 'string') {
-            evaled = require('util').inspect(evaled);
+            evaled = inspect(evaled);
         }
 
         msg.delete();
