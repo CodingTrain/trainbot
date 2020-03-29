@@ -13,6 +13,7 @@ exports.run = async (bot, msg, args) => {
     const code = args.join(' ');
     let output;
     try {
+        // eslint-disable-next-line no-eval
         let evaled = await Promise.resolve(eval(code));
         if (typeof evaled !== 'string') {
             evaled = inspect(evaled);

@@ -12,7 +12,7 @@ exports.run = (bot, msg, args) => {
         online: `User is online! ${emojis.photoblob}`,
         idle: `User is idle, probably drinking a cup of tea ${emojis.blobtea}`,
         offline: `User is offline, probably sleeping ${emojis.bloblseeping}`,
-        dnd: `User doesn\'t want to be disturbed right now ${emojis.bloboutage}`,
+        dnd: `User doesn't want to be disturbed right now ${emojis.bloboutage}`,
     };
     const game = member.presence.game
         ? member.presence.game.name
