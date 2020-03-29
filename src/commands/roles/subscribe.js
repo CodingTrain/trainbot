@@ -1,7 +1,6 @@
-exports.run = async (bot, msg, args) => {
+exports.run = async (bot, msg) => {
     try {
         const { member } = msg;
-        console.log(bot.config.notificationRole);
         if (member.roles.has(bot.config.notificationRole)) {
             await member.removeRole(bot.config.notificationRole);
             msg.channel.send('Removed role! You won\'t be notified anymore');
