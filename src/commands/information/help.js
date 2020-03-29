@@ -13,13 +13,13 @@ exports.run = (bot, msg, args) => {
             })
             .filter(cmd => {
                 const { roles } = bot.commands.get(cmd).info;
+                if (!roles) return true;
                 const roleCheck = roles.every(e => (
                     msg.member.roles.find(role => role.name.toLowerCase() === e.toLowerCase())
                 ));
                 if (roles && !roleCheck) {
                     return true;
                 }
-                if (!roles) return true;
                 return false;
             })
             .map(cmd => `\`${cmd}\``)
