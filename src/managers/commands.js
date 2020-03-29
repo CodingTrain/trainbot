@@ -102,7 +102,7 @@ class Commands {
                 const roleCheck = roles.some(e => (
                     msg.member.roles.find(role => role.name.toLowerCase() === e.toLowerCase())
                 ));
-                if (roleCheck) return msg.channel.send(':x: Sorry you are not allowed to run this command');
+                if (!roleCheck) return msg.channel.send(':x: Sorry you are not allowed to run this command');
             }
 
             try {
