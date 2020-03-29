@@ -8,6 +8,9 @@ const bot = new Discord.Client();
 const config = JSON.parse(
     fs.readFileSync(path.join(__dirname, '..', 'config.json')),
 );
+const wordBlacklist = JSON.parse(
+    fs.readFileSync(path.join(__dirname, '..', 'word-blacklist.json')),
+);
 
 bot.config = config;
 bot.commands = new Commands(bot);
