@@ -5,8 +5,7 @@
   "author": "Noah van Boven",
   "license": "MIT",
   "scripts": {
-      "start": "node .",
-      "eslint:github-action": "eslint src/"
+      "start": "node ."
   },
   "dependencies": {
     "date-fns": "^2.0.0-alpha.34",
