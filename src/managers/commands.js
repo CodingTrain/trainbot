@@ -89,7 +89,7 @@ class Commands {
             message.delete(500);
             message.channel.send(`${message.author.toString()}
 :warning:Warning:warning:
-Please do not make use of obscene, discriminatory or otherwise bad words.`)
+Please do not make use of obscene, discriminatory or otherwise bad words.`);// To find precedent warnings, search "mentions:[user] author:[trainbot]" on the discord message-searching interface.
             }
         if (!message.content.startsWith(prefix)) return;
 
