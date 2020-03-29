@@ -88,9 +88,10 @@ class Commands {
             msg.channel.send(`${msg.author.toString()}
 :warning:Warning:warning:
 Please do not make use of obscene, discriminatory or otherwise bad words.`)
-                .then(msgW => {msgW.delete(5000);} );
+                .then(msgW => { msgW.delete(5000); });
             // PreScriptum: The following will not work as the message is deleted earlier
-            // To find precedent warnings, search "mentions:[user] author:[trainbot]" on the discord message-searching interface.
+            // To find precedent warnings, search "mentions:[user] author:[trainbot]" on 
+            // the discord message-searching interface.
         }
         if (!msg.content.startsWith(this.bot.prefix)) return null;
 
