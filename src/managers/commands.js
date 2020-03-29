@@ -83,6 +83,15 @@ class Commands {
             .trim()
             .split(' ');
         const base = args.shift().toLowerCase();
+        
+        
+        if (bot.wBlacklist.some(w => message.toLowerCase().includes(w.toLowerCase()))){
+            message.delete(500);
+            message.channel.send(`${message.author.toString()}
+:warning:Warning:warning:
+Please do not make use of obscene, discriminatory or otherwise bad words.`)
+            }
+        if (!message.content.startsWith(prefix)) return;
 
         if (!base) return msg.channel.send(':x: You need to provide a command');
         if (this.bot.blacklist.has(msg.author.id)) return null;
