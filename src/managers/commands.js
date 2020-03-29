@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { Collection } = require('discord.js');
+const { prefix } = bot.config;
 
 class Commands {
     constructor(bot) {
@@ -83,15 +84,13 @@ class Commands {
             .trim()
             .split(' ');
         const base = args.shift().toLowerCase();
-        
-        
-        if (bot.wBlacklist.some(w => message.toLowerCase().includes(w.toLowerCase()))){
-            message.delete(500);
-            message.channel.send(`${message.author.toString()}
+        if (this.bot.wBlacklist.some(w => msg.toLowerCase().includes(w.toLowerCase()))) {
+            msg.delete(500);
+            msg.channel.send(`${msg.author.toString()}
 :warning:Warning:warning:
 Please do not make use of obscene, discriminatory or otherwise bad words.`);// To find precedent warnings, search "mentions:[user] author:[trainbot]" on the discord message-searching interface.
-            }
-        if (!message.content.startsWith(prefix)) return;
+        }
+        if (!msg.content.startsWith(prefix)) return null;
 
         if (!base) return msg.channel.send(':x: You need to provide a command');
         if (this.bot.blacklist.has(msg.author.id)) return null;
