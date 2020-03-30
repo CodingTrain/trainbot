@@ -1,0 +1,27 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "nobobo1234",
+      "name": "Nola1222",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/14055571?v=4",
+      "profile": "https://noahvb.nl",
+      "contributions": [
+        "code",
+        "bug",
+        "maintenance",
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "trainbot",
+  "projectOwner": "CodingTrain",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
