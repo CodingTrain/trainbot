@@ -83,6 +83,17 @@ class Commands {
             .trim()
             .split(' ');
         const base = args.shift().toLowerCase();
+        if (this.bot.wBlacklist.some(w => msg.toLowerCase().includes(w.toLowerCase()))) {
+            msg.delete(500);
+            msg.channel.send(`${msg.author.toString()}
+:warning:Warning:warning:
+Please do not make use of obscene, discriminatory or otherwise bad words.`)
+                .then(msgW => { msgW.delete(5000); });
+            // PreScriptum: The following will not work as the message is deleted earlier
+            // To find precedent warnings, search "mentions:[user] author:[trainbot]" on
+            // the discord message-searching interface.
+        }
+        if (!msg.content.startsWith(this.bot.prefix)) return null;
 
         if (!base) return msg.channel.send(':x: You need to provide a command');
         if (this.bot.blacklist.has(msg.author.id)) return null;
