@@ -25,6 +25,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "informathemusic",
+      "name": "informathemusic",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/39065949?v=4",
+      "profile": "https://github.com/informathemusic",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
