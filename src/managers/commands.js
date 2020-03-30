@@ -1,13 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 const { Collection } = require('discord.js');
-const Filter = require('bad-words')
+const Filter = require('bad-words');
 
 class Commands {
     constructor(bot) {
         this.bot = bot;
         this.cmds = new Collection();
-        this.filter = new Filter({list:this.bot.wBlacklist})
+        this.filter = new Filter({ list: this.bot.wBlacklist });
     }
 
     get names() {
@@ -85,7 +85,7 @@ class Commands {
             .trim()
             .split(' ');
         const base = args.shift().toLowerCase();
-        if (this.filter.clean(msg.content)!==msg.content) {
+        if (this.filter.clean(msg.content) !== msg.content) {
             msg.delete(500);
             msg.channel.send(`${msg.author.toString()}
 :warning:Warning:warning:
