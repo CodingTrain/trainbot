@@ -13,13 +13,13 @@ exports.run = (bot, msg, args) => {
             })
             .filter(cmd => {
                 const { roles } = bot.commands.get(cmd).info;
-                const roleCheck = roles.every(e => (
+                if (!roles) return true;
+                const roleCheck = roles.some(e => (
                     msg.member.roles.find(role => role.name.toLowerCase() === e.toLowerCase())
                 ));
-                if (roles && !roleCheck) {
+                if (roles && roleCheck) {
                     return true;
                 }
-                if (!roles) return true;
                 return false;
             })
             .map(cmd => `\`${cmd}\``)
@@ -36,8 +36,11 @@ exports.run = (bot, msg, args) => {
         if (permissions && permissions.some(e => !msg.member.permissions.has(e))) {
             return msg.channel.send('You\'re trying to ask for help for a command you don\'t have access to');
         }
-        if (roles && roles.some(e => !msg.member.roles.find(role => role.name === e))) {
-            return msg.channel.send(':x: Sorry you are not allowed to run this command');
+        if (roles) {
+            const roleCheck = roles.some(e => (
+                msg.member.roles.find(role => role.name.toLowerCase() === e.toLowerCase())
+            ));
+            if (!roleCheck) return msg.channel.send('You\'re trying to ask for help for a command you don\'t have access to');
         }
 
         let { usage } = info;

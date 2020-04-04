@@ -20,5 +20,4 @@ for (const event of events) {
     const eventFunc = require(path.join(__dirname, 'events', name));
     bot.on(name, (...args) => eventFunc.run(bot, ...args));
 }
-
 bot.login(config.token);
