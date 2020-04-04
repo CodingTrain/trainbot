@@ -5,4 +5,5 @@ exports.emojis = {
     photoblob: '<:photoblob:660161410042691615>',
     blobtea: '<:blobtea:660162050558787596>',
     ct_asterisk: '<:ct_asterisk:664125053008609300>',
+    redtick: '<:redtick:695981227680727040>',
 };
