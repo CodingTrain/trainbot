@@ -17,5 +17,5 @@ exports.info = {
     name: 'supscribe',
     usage: 'supscribe',
     help: 'This command gives you the supporter role or removes it, if you already got it.',
-    roles: ['Youtube Member', 'Patreon Supporter'],
+    roles: ['Youtube Member', 'Patreon Supporter', 'Station Manager', 'Signal Maintainer'],
 };
