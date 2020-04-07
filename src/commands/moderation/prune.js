@@ -3,7 +3,7 @@ exports.run = async (bot, msg, args) => {
     if (Number.isNaN(args[0])) throw new Error('Your amount isn\'t a number.');
     if (args[0] > 50) throw new Error('You can\'t delete more that 50 messages at once');
 
-    const messages = await msg.channel.fetchMessages({ limit: Number(args[0]) });
+    const messages = await msg.channel.fetchMessages({ limit: Number(args[0])+1 });
 
     for (const msgToDelete of messages.values()) {
         if (msgToDelete.deletable) {
