@@ -4,9 +4,12 @@
   "ownerID": "User ID of the bot owner",
   "notificationRole": "ID of the notification role",
   "supporterRole": "ID of the supporter role",
+  "modLog": "ID of the mod log",
   "rulesChannel": "ID of the channel with the rules",
-  "welcomeChannel": "ID of the welcome channel",
-  "introductionsChannel": "ID of introductions channel",
   "rulesMessage": "ID of the rule message",
-  "mutedRole": "ID of the muted role"
+  "mutedRole": "ID of the muted role",
+  "welcomeChannel": "ID of the welcome channel",
+  "introductionsChannel": "ID of the introductions channel",
+  "clasherRole": "ID of the clasher role",
+  "clasherManager": "ID of the clasher manager role"
 }
