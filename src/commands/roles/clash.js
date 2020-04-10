@@ -17,7 +17,7 @@ exports.run = async (bot, msg, args) => {
                 .setTitle(`${msg.author.username} has issued a ping for the Clashers`)
                 .setDescription(`A new game is starting at ${args[1]}`);
 
-            msg.channel.send(`<@&${bot.config.clasherRole}>`, { embed });
+            msg.channel.send(`<@${bot.config.clasherRole}>`, { embed });
             msg.delete();
         } else {
             throw new Error('You don\'t have sufficient permissions to ping this role');
