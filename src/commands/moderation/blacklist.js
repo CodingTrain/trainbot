@@ -1,4 +1,4 @@
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const { resolveUser } = require('../../utils');
 
 exports.run = (bot, msg, args) => {
@@ -6,7 +6,7 @@ exports.run = (bot, msg, args) => {
         const list = bot.blacklist.keyArray()
             .map(user => `- ${bot.blacklist.get(user)} (${user})`)
             .join('\n');
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setTitle('The Blacklist')
             .setDescription('A list of people who are forbidden from using the bot')
             .addField('List', list.length !== 0 ? list : 'There are no people on the blacklist');

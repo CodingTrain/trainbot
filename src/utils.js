@@ -1,23 +1,24 @@
 exports.stripIndents = string => string.replace(/^[ \\t]+/gm, '');
 
 exports.resolveUser = (msg, username) => {
+    const memberCache = msg.guild.members.cache;
     if (/<@!?\d+>/g.test(username)) {
-        return msg.guild.members.get(msg.mentions.users.first().id);
+        return memberCache.get(msg.mentions.users.first().id);
     }
-    if (msg.guild.members.has(username)) {
-        return msg.guild.members.get(username);
+    if (memberCache.has(username)) {
+        return memberCache.get(username);
     }
     if (/(.*)#(\d{4})/g.test(username)) {
-        return msg.guild.members.find(member => member.user.tag === username);
+        return memberCache.find(member => member.user.tag === username);
     }
-    if (msg.guild.members.find(member => member.nickname === username)) {
-        return msg.guild.members.find(member => member.nickname === username);
+    if (memberCache.find(member => member.nickname === username)) {
+        return memberCache.find(member => member.nickname === username);
     }
-    if (msg.guild.members.find(member => member.user.username === username)) {
-        return msg.guild.members.find(member => member.user.username === username);
+    if (memberCache.find(member => member.user.username === username)) {
+        return memberCache.find(member => member.user.username === username);
     }
-    if (msg.guild.members.find(member => member.id === username)) {
-        return msg.guild.members.find(member => member.id === username);
+    if (memberCache.find(member => member.id === username)) {
+        return memberCache.find(member => member.id === username);
     }
     return null;
 };

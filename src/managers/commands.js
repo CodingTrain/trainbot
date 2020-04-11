@@ -96,12 +96,12 @@ class Commands {
 
             const { permissions } = command.info;
             const { roles } = command.info;
-            if (permissions && permissions.some(e => !msg.member.permissions.has(e))) {
+            if (permissions && permissions.some(e => !msg.member.hasPermission(e))) {
                 return msg.channel.send(':x: Sorry you are not allowed to run this command');
             }
             if (roles) {
                 const roleCheck = roles.some(e => (
-                    msg.member.roles.find(role => role.name.toLowerCase() === e.toLowerCase())
+                    msg.member.roles.cache.find(role => role.name.toLowerCase() === e.toLowerCase())
                 ));
                 if (!roleCheck) return msg.channel.send(':x: Sorry you are not allowed to run this command');
             }
@@ -110,7 +110,7 @@ class Commands {
                 await command.run(this.bot, msg, args);
             } catch (e) {
                 const m = await msg.channel.send(`:x: ${e}`);
-                m.delete(5000);
+                m.delete({ timeout: 5000 });
             }
         } else {
             msg.channel.send(`:x: Sorry, the command ${base} isn't found.`);

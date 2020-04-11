@@ -1,4 +1,4 @@
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const formatDistanceToNow = require('date-fns/formatDistanceToNow');
 const { resolveUser } = require('../../utils');
 const { emojis } = require('../../constants');
@@ -25,7 +25,7 @@ exports.run = (bot, msg, args) => {
     let size = 0;
     if (member.roles.size !== 1) {
     // We don't use the @everyone role
-        roles = member.roles.filter(role => role.name !== '@everyone');
+        roles = member.roles.cache.filter(role => role.name !== '@everyone');
         ({ size } = roles);
         if (roles.size !== 1) {
             roles = `${roles
@@ -38,9 +38,9 @@ exports.run = (bot, msg, args) => {
         }
     }
 
-    const embed = new RichEmbed()
-        .setAuthor(member.user.tag, member.user.displayAvatarURL)
-        .setThumbnail(member.user.displayAvatarURL)
+    const embed = new MessageEmbed()
+        .setAuthor(member.user.tag, member.user.displayAvatarURL())
+        .setThumbnail(member.user.displayAvatarURL())
         .setTitle(`Information about ${member.displayName}`)
         .setDescription(status[member.presence.status])
         .addField('Username', member.user.username, true)

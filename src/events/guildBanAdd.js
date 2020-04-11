@@ -1,8 +1,8 @@
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 exports.run = (bot, guild, user) => {
-    const embed = new RichEmbed()
+    const embed = new MessageEmbed()
         .setTitle(`:police_officer: ${user.tag} was just banned from the server`);
 
-    bot.channels.get(bot.config.modLog).send(embed);
+    bot.channels.resolve(bot.config.modLog).send(embed);
 };
