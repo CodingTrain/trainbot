@@ -5,16 +5,14 @@ exports.run = bot => {
         `${bot.user.username}#${bot.user.discriminator} is ready!
         -------------------------------
         ID: ${bot.user.id}
-        Currently in ${bot.guilds.size} guild(s)
+        Currently in ${bot.guilds.cache.size} guild(s)
         Loaded ${bot.commands.size} command(s) 🤖`,
     );
 
-    bot.user.setPresence({
-        game: { name: 'Choo choo! I am trainbot.', type: 0 },
-    });
+    bot.user.setActivity('Choo, choo! I am Trainbot.', { type: 'PLAYING' });
 
     // Fetch messages that are to be used
-    bot.channels
-        .get(bot.config.rulesChannel)
-        .fetchMessage(bot.config.rulesMessage);
+    const channel = bot.channels
+        .resolve(bot.config.rulesChannel);
+    channel.messages.fetch(bot.config.rulesMessage);
 };

@@ -1,11 +1,11 @@
 exports.run = async (bot, msg) => {
     try {
         const { member } = msg;
-        if (member.roles.has(bot.config.supporterRole)) {
-            await member.removeRole(bot.config.supporterRole);
+        if (member.roles.cache.has(bot.config.supporterRole)) {
+            await member.roles.remove(bot.config.supporterRole);
             msg.channel.send('Removed supporter role! You won\'t be pinged anymore');
         } else {
-            await member.addRole(bot.config.supporterRole);
+            await member.roles.add(bot.config.supporterRole);
             msg.channel.send('Added supporter role! You will now be pinged');
         }
     } catch (err) {

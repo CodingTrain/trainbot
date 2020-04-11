@@ -1,8 +1,8 @@
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 exports.run = (bot, member) => {
-    const embed = new RichEmbed()
+    const embed = new MessageEmbed()
         .setTitle(`:door: ${member.user.tag} just left the server`);
 
-    bot.channels.get(bot.config.modLog).send(embed);
+    bot.channels.resolve(bot.config.modLog).send(embed);
 };
