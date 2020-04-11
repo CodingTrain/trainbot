@@ -1,4 +1,4 @@
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 // eslint-disable-next-line consistent-return
 exports.run = (bot, msg, args) => {
@@ -7,7 +7,7 @@ exports.run = (bot, msg, args) => {
             .filter(cmd => !bot.commands.get(cmd).info.owner)
             .filter(cmd => {
                 const perms = bot.commands.get(cmd).info.permissions;
-                if (perms && !perms.every(e => !msg.member.permissions.has(e))) return true;
+                if (perms && !perms.every(e => !msg.member.hasPermission(e))) return true;
                 if (!perms) return true;
                 return false;
             })
@@ -15,7 +15,7 @@ exports.run = (bot, msg, args) => {
                 const { roles } = bot.commands.get(cmd).info;
                 if (!roles) return true;
                 const roleCheck = roles.some(e => (
-                    msg.member.roles.find(role => role.name.toLowerCase() === e.toLowerCase())
+                    msg.member.roles.cache.find(role => role.name.toLowerCase() === e.toLowerCase())
                 ));
                 if (roles && roleCheck) {
                     return true;
@@ -33,12 +33,12 @@ exports.run = (bot, msg, args) => {
         const { info } = bot.commands.get(args[0]);
         const { permissions } = info;
         const { roles } = info;
-        if (permissions && permissions.some(e => !msg.member.permissions.has(e))) {
+        if (permissions && permissions.some(e => !msg.member.hasPermission(e))) {
             return msg.channel.send('You\'re trying to ask for help for a command you don\'t have access to');
         }
         if (roles) {
             const roleCheck = roles.some(e => (
-                msg.member.roles.find(role => role.name.toLowerCase() === e.toLowerCase())
+                msg.member.roles.cache.find(role => role.name.toLowerCase() === e.toLowerCase())
             ));
             if (!roleCheck) return msg.channel.send('You\'re trying to ask for help for a command you don\'t have access to');
         }
@@ -50,7 +50,7 @@ exports.run = (bot, msg, args) => {
             usage = bot.config.prefix + usage;
         }
 
-        const embed = new RichEmbed()
+        const embed = new MessageEmbed()
             .setTitle(info.name)
             .addField('Usage(s)', usage, true)
             .addField('Category', info.category, true)

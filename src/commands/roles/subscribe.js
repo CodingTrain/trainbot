@@ -1,11 +1,11 @@
 exports.run = async (bot, msg) => {
     try {
         const { member } = msg;
-        if (member.roles.has(bot.config.notificationRole)) {
-            await member.removeRole(bot.config.notificationRole);
+        if (member.roles.cache.has(bot.config.notificationRole)) {
+            await member.roles.remove(bot.config.notificationRole);
             msg.channel.send('Removed role! You won\'t be notified anymore');
         } else {
-            await member.addRole(bot.config.notificationRole);
+            await member.roles.add(bot.config.notificationRole);
             msg.channel.send('Added role! You will now be notified');
         }
     } catch (err) {
