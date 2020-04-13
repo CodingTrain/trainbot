@@ -17,9 +17,9 @@ exports.run = async (bot, msg, args) => {
                 .setTitle(`${msg.author.username} has issued a ping for the Clashers`)
                 .setDescription(`A new game is starting at ${args[1]}`);
 
-            msg.guild.roles.resolve(bot.config.clasherRole).setMentionable(true);
+            await msg.guild.roles.resolve(bot.config.clasherRole).setMentionable(true);
             await msg.channel.send(`<@&${bot.config.clasherRole}>`);
-            msg.guild.roles.resolve(bot.config.clasherRole).setMentionable(false);
+            await msg.guild.roles.resolve(bot.config.clasherRole).setMentionable(false);
             await msg.channel.send(embed);
             await msg.delete();
         } else {
