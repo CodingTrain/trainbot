@@ -5,7 +5,7 @@ exports.run = async (bot, msg, args) => {
     if (args.length === 0 || args[0] === 'subscribe') {
         if (member.roles.cache.has(bot.config.clasherRole)) {
             await member.roles.remove(bot.config.clasherRole);
-            msg.channel.send('Removed code clasher role! You won\'t be for code clashes anymore.');
+            msg.channel.send('Removed code clasher role! You won\'t be notified for code clashes anymore.');
         } else {
             await member.roles.add(bot.config.clasherRole);
             msg.channel.send('Added code clasher role! You will be notified for code clashes now.');
