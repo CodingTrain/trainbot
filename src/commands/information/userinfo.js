@@ -23,7 +23,7 @@ exports.run = (bot, msg, args) => {
     const joinedAt = formatDistanceToNow(member.joinedAt, { addSuffix: true });
     let roles = 'This user has no special roles';
     let size = 0;
-    if (member.roles.size !== 1) {
+    if (member.roles.cache.size !== 1) {
     // We don't use the @everyone role
         roles = member.roles.cache.filter(role => role.name !== '@everyone');
         ({ size } = roles);
