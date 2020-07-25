@@ -20,5 +20,5 @@ exports.info = {
     name: 'prune',
     usage: 'prune <number of messages>',
     help: 'Prunes a specific amount of messages',
-    permissions: ['KICK_MEMBERS'],
+    permissions: ['MANAGE_MESSAGES'],
 };
