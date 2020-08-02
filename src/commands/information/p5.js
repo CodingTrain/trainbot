@@ -1,5 +1,5 @@
 exports.run = async (bot, msg, args) => {
-    if (args.length === 0){
+    if (args.length === 0) {
         throw new Error(':x: Please provide a keyword to search for');
     }
     await msg.channel.send(`https://p5js.org/reference/#/p5/${args[0]}`);
