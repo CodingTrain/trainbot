@@ -1,6 +1,6 @@
 # The Train Bot
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 This is the repository for the Train bot, a discord bot made for the official Coding Train discord server.
 
@@ -19,6 +19,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://www.shiffman.net"><img src="https://avatars0.githubusercontent.com/u/191758?v=4" width="100px;" alt=""/><br /><sub><b>Daniel Shiffman</b></sub></a><br /><a href="#content-shiffman" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/informathemusic"><img src="https://avatars3.githubusercontent.com/u/39065949?v=4" width="100px;" alt=""/><br /><sub><b>informathemusic</b></sub></a><br /><a href="https://github.com/CodingTrain/trainbot/commits?author=informathemusic" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/GypsyDangerous"><img src="https://avatars1.githubusercontent.com/u/45735850?v=4" width="100px;" alt=""/><br /><sub><b>David Snyder</b></sub></a><br /><a href="https://github.com/CodingTrain/trainbot/issues?q=author%3Agypsydangerous" title="Bug reports">🐛</a> <a href="https://github.com/CodingTrain/trainbot/commits?author=gypsydangerous" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/arnavsirigere"><img src="https://avatars0.githubusercontent.com/u/57677629?v=4" width="100px;" alt=""/><br /><sub><b>Arnav Sirigere</b></sub></a><br /><a href="https://github.com/CodingTrain/trainbot/commits?author=arnavsirigere" title="Code">💻</a></td>
   </tr>
 </table>
 
