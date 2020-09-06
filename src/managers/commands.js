@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { Collection } = require('discord.js');
+const { emojis } = require('../constants');
 
 class Commands {
     constructor(bot) {
@@ -73,6 +74,13 @@ class Commands {
             this.cmds.set(name, cmd);
         } else {
             this.bot.logger.error(error);
+        }
+    }
+
+    handleReactions(msg) {
+        if (msg.channel.id === this.bot.config.introductionsChannel) {
+            const [ctSemicolon] = emojis.ct_semicolon.match(/\d+/);
+            msg.react(ctSemicolon);
         }
     }
 
