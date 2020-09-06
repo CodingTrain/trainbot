@@ -6,6 +6,7 @@
         "import/no-dynamic-require": "off",
         "global-require": "off",
         "arrow-parens": "off",
+        "linebreak-style" : "off",
         "no-prototype-builtins": "off",
         "no-console": "off",
         "class-methods-use-this": "off",
