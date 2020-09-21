@@ -101,7 +101,11 @@ class Commands {
             if (command.info.owner && this.bot.config.ownerID !== msg.author.id) {
                 return msg.channel.send(':x: Sorry, only the owner can run this command');
             }
-
+            if(msg.channel.id!='276366150713999363'){
+                msg.author.send("Hi!👋\nPlease send your command in the appropriate channel! (<#276366150713999363>)")
+                    .catch(()=>{msg.channel.send(`${msg.member}, please send your command in the appropriate channel! (<#276366150713999363>)`).then(v=>v.delete(5000))})
+                msg.delete(500);
+            }
             const { permissions } = command.info;
             const { roles } = command.info;
             if (permissions && permissions.some(e => !msg.member.hasPermission(e))) {
